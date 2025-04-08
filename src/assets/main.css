@@ -1,0 +1,113 @@
+/* src/assets/main.css */
+
+/* Reset some browser defaults (Keep these) */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; /* Better default font stack */
+  box-sizing: border-box;
+  background-color: #f8f9fa; /* Light background for the body */
+  color: #212529; /* Default text color */
+  line-height: 1.5;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/* App Wrapper (Keep this flex structure) */
+#app-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Main Content Area Styling */
+main {
+  flex-grow: 1; /* Make main content area take up available space */
+  width: 100%;  /* Ensure it takes full width initially */
+  max-width: 1140px; /* Set a max-width for larger screens (adjust as needed) */
+  margin-left: auto;  /* Center the main content block */
+  margin-right: auto; /* Center the main content block */
+  padding: 1.5rem 1rem; /* Add more padding */
+  background-color: #ffffff; /* White background for content area */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow */
+  margin-top: 1rem; /* Space below navbar */
+  margin-bottom: 2rem; /* Space above footer */
+}
+
+/* Basic Link Styling */
+a {
+  color: #0d6efd; /* Bootstrap blue */
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* Basic Button Styling */
+button {
+  display: inline-block;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  background-color: #0d6efd;
+  border: 1px solid #0d6efd;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+button:hover {
+  background-color: #0b5ed7;
+  border-color: #0a58ca;
+}
+
+button:disabled {
+  background-color: #6c757d;
+  border-color: #6c757d;
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* Basic Form Styling */
+form div {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  display: block;
+  width: 100%; /* Make inputs take full width of their container */
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+input:focus {
+  color: #212529;
+  background-color: #fff;
+  border-color: #86b7fe;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(13,110,253,.25);
+}
