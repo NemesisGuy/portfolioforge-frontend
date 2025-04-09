@@ -1,26 +1,15 @@
 // src/main.js
+import './assets/main.css' // Import CSS with variables
 
-// --- CSS Import ---
-import './assets/main.css' // Or your CSS entry point path
+import { createApp } from 'vue'
+import { createPinia } from 'pinia' // Import Pinia
 
-// --- Vue Core Import ---
-import { createApp } from 'vue' // <<< Keep ONE of these
+import App from './App.vue'
+import router from './router/index.js' // Import Router (ensure router/index.js exists)
 
-// --- Pinia Import ---
-import { createPinia } from 'pinia' // Keep this (you just installed it)
-
-// --- Root Component Import ---
-import App from './App.vue' // <<< Keep ONE of these
-
-// --- Router Import ---
-import router from './router' // Keep this
-
-// --- Create App Instance ---
 const app = createApp(App)
 
-// --- Use Plugins ---
-app.use(createPinia())
-app.use(router)
+app.use(createPinia()) // Use Pinia - this makes stores available
+app.use(router)      // Use Router
 
-// --- Mount App ---
-app.mount('#app')
+app.mount('#app')    // Mount to the element with id="app" in index.html

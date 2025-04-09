@@ -1,28 +1,78 @@
 /* src/assets/main.css */
 
-/* Reset some browser defaults (Keep these) */
+/* Light theme variables (default) */
+:root {
+  --color-background: #f8f9fa;         /* Light Gray */
+  --color-background-content: #ffffff; /* White */
+  --color-background-nav: #343a40;     /* Dark Gray */
+  --color-background-footer: #f8f9fa;  /* Light Gray */
+
+  --color-text-primary: #212529;       /* Dark Gray */
+  --color-text-secondary: #6c757d;     /* Medium Gray */
+  --color-text-nav: rgba(255, 255, 255, 0.75);
+  --color-text-nav-hover: #ffffff;
+  --color-text-footer: #6c757d;
+
+  --color-border: #e7e7e7;             /* Light Gray Border */
+  --color-border-input: #ced4da;       /* Input Border */
+  --color-shadow: rgba(0,0,0,0.1);      /* Subtle Shadow */
+
+  --color-link: #0d6efd;               /* Blue */
+  --color-button-bg: #0d6efd;
+  --color-button-border: #0d6efd;
+  --color-button-hover-bg: #0b5ed7;
+  --color-button-hover-border: #0a58ca;
+  --color-button-text: #ffffff;
+}
+
+/* Dark theme variables */
+html.dark {
+  --color-background: #212529;         /* Dark Gray */
+  --color-background-content: #343a40; /* Lighter Dark Gray */
+  --color-background-nav: #1a1d20;     /* Very Dark Gray */
+  --color-background-footer: #212529;  /* Dark Gray */
+
+  --color-text-primary: #f8f9fa;       /* Light Gray */
+  --color-text-secondary: #adb5bd;     /* Lighter Medium Gray */
+  --color-text-nav: rgba(255, 255, 255, 0.6);
+  --color-text-nav-hover: #ffffff;
+  --color-text-footer: #adb5bd;
+
+  --color-border: #495057;             /* Darker Gray Border */
+  --color-border-input: #495057;       /* Input Border */
+  --color-shadow: rgba(0,0,0,0.3);      /* Darker Shadow */
+
+  --color-link: #6ea8fe;               /* Lighter Blue */
+  --color-button-bg: #6ea8fe;
+  --color-button-border: #6ea8fe;
+  --color-button-hover-bg: #8bb9fe;
+  --color-button-hover-border: #a8c9fe;
+  --color-button-text: #212529; /* Dark text on light blue buttons */
+}
+
+/* Apply variables to elements */
 body, html {
   margin: 0;
   padding: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; /* Better default font stack */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   box-sizing: border-box;
-  background-color: #f8f9fa; /* Light background for the body */
-  color: #212529; /* Default text color */
+  background-color: var(--color-background); /* USE VAR */
+  color: var(--color-text-primary);      /* USE VAR */
   line-height: 1.5;
+  /* Smooth transition for color changes */
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 *, *:before, *:after {
   box-sizing: inherit;
 }
 
-/* App Wrapper (Keep this flex structure) */
 #app-wrapper {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
-/* Main Content Area Styling */
 main {
   flex-grow: 1; /* Make main content area take up available space */
   width: 100%;  /* Ensure it takes full width initially */
@@ -30,46 +80,53 @@ main {
   margin-left: auto;  /* Center the main content block */
   margin-right: auto; /* Center the main content block */
   padding: 1.5rem 1rem; /* Add more padding */
-  background-color: #ffffff; /* White background for content area */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow */
+  background-color: var(--color-background-content); /* USE VAR */
+  box-shadow: 0 2px 4px var(--color-shadow); /* USE VAR */
   margin-top: 1rem; /* Space below navbar */
   margin-bottom: 2rem; /* Space above footer */
+  transition: background-color 0.3s ease; /* Smooth transition */
 }
 
-/* Basic Link Styling */
 a {
-  color: #0d6efd; /* Bootstrap blue */
+  color: var(--color-link); /* USE VAR */
   text-decoration: none;
 }
 a:hover {
   text-decoration: underline;
 }
 
-/* Basic Button Styling */
-button {
+/* General Button Styling */
+button,
+input[type="submit"], /* Style submit inputs like buttons */
+.button { /* Add a generic button class */
   display: inline-block;
   font-weight: 400;
   line-height: 1.5;
-  color: #fff;
+  color: var(--color-button-text); /* USE VAR */
   text-align: center;
   text-decoration: none;
   vertical-align: middle;
   cursor: pointer;
   user-select: none;
-  background-color: #0d6efd;
-  border: 1px solid #0d6efd;
+  background-color: var(--color-button-bg); /* USE VAR */
+  border: 1px solid var(--color-button-border); /* USE VAR */
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
   border-radius: 0.25rem;
   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
-button:hover {
-  background-color: #0b5ed7;
-  border-color: #0a58ca;
+button:hover,
+input[type="submit"]:hover,
+.button:hover {
+  background-color: var(--color-button-hover-bg); /* USE VAR */
+  border-color: var(--color-button-hover-border); /* USE VAR */
+  /* Ensure text color contrast on hover if needed */
 }
 
-button:disabled {
+button:disabled,
+input[type="submit"]:disabled,
+.button:disabled {
   background-color: #6c757d;
   border-color: #6c757d;
   opacity: 0.65;
@@ -85,29 +142,53 @@ label {
   display: block;
   margin-bottom: 0.5rem;
   font-weight: 500;
+  color: var(--color-text-primary); /* Apply theme text color */
 }
 
 input[type="text"],
 input[type="email"],
-input[type="password"] {
+input[type="password"],
+textarea { /* Apply to textarea as well */
   display: block;
   width: 100%; /* Make inputs take full width of their container */
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #212529;
-  background-color: #fff;
+  color: var(--color-text-primary); /* USE VAR */
+  background-color: var(--color-background-content); /* USE VAR */
   background-clip: padding-box;
-  border: 1px solid #ced4da;
+  border: 1px solid var(--color-border-input); /* USE VAR */
   border-radius: 0.25rem;
-  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out, background-color .15s ease-in-out, color .15s ease-in-out;
 }
 
-input:focus {
-  color: #212529;
-  background-color: #fff;
-  border-color: #86b7fe;
+input:focus,
+textarea:focus {
+  color: var(--color-text-primary);
+  background-color: var(--color-background-content);
+  border-color: var(--color-link); /* Use link color for focus border */
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(13,110,253,.25);
+  /* Adjust focus shadow color if desired */
+  box-shadow: 0 0 0 0.25rem rgba(13,110,253,.25); /* Keep light for now or use another var */
+}
+
+/* Style placeholder text */
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: var(--color-text-secondary);
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: var(--color-text-secondary);
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: var(--color-text-secondary);
+}
+
+/* Ensure text selection background adjusts */
+::selection {
+  background-color: var(--color-link);
+  color: var(--color-button-text);
 }
